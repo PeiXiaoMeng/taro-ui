@@ -29,9 +29,9 @@ class Docs extends React.Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    // if (nextProps.location.pathname !== this.props.location.pathname) {
-    //   this.refs.atMarkdown.scrollTo(0, 0)
-    // }
+    if (nextProps.location.pathname !== this.props.location.pathname) {
+      this.refs.atMarkdown.scrollTo(0, 0)
+    }
   }
 
   changeMode() {
@@ -47,8 +47,7 @@ class Docs extends React.Component {
   render() {
     const data = navsConfig.components
     const { fixed, mode } = this.state
-    // const pathname = this.props.location.pathname
-    const pathname = '/docs/introduction'
+    const pathname = this.props.location.pathname
     const reg = /\/\S+\/(\S+)/
     const result = pathname.match(reg)
     const curDemoPath = pathMap[result[1]] || ''
